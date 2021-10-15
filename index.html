@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="style.css" rel= "stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src = 'rule.js'></script>
+		<script src='main.js' type="text/javascript"></script>
+    </head>
+
+
+    <body>
+		<div class ='grid'>
+			<canvas id = 'board' class='game-board'></canvas>
+			<div class='right-column'>
+				<div>
+					<h1>TETRIS</h1>
+					<p>Score:<span id = 'score'>0</span></p>
+					<p>Lines:<span id = 'lines'>0</span></p>
+					<p>Level:<span id = 'level'>0</span></p>
+					<canvas id = 'next' class = 'next'></canvas>
+				</div>
+				<button onclick= 'play()' class = 'play-button'>Play</button> 
+			</div>
+		</div>
+    </body>
+</html>
