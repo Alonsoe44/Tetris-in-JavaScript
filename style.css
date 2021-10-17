@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: 320px 200px;
 }
-/*I need to revise this code later cuz i dont undertand*/
+/*I need to revise this code later cuz i dont understand*/
 .right-column{
     display: flex;
     flex-direction: column;
@@ -16,4 +16,5 @@
 
 .game-board{
     border: solid 2px;
+    color: black;
 }
