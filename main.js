@@ -9,10 +9,14 @@ ctx.canvas.height = rows*blockSize;
 ctx.scale(blockSize, blockSize);
 ctx.lineWidth = 0.05;
 
-//Now I create the  the board
+//Some key variables
 
+let dropStart = Date.now();
+let dropTime = 1000;
 let boardArr = [];
+let gameOver = false;
 
+//Now I create the  the board
 for(let i = 0; i < rows; i++){
     boardArr[i] = [];
     for(let j = 0; j < cols; j++){
@@ -63,8 +67,6 @@ document.addEventListener('keydown', function(event) {
             break;
         case 'Enter':
             tetraminoes.rotateRight();
-            console.log('enter');
-        default:
     }
 });
 //Random tetramino generator function
@@ -72,10 +74,20 @@ function generateTetra(){
     let randomN = Math.floor(Math.random()*tetraminousArr.length);
     return new Tetraminoes(tetraminousArr[randomN][0],tetraminousArr[randomN][1]);
 }
-//Time to drp the pieces
+//Time to drop the pieces
 function drop(){
-
+    let now = Date.now();
+    let diffStart_Call = now - dropStart;
+    if(diffStart_Call>dropTime){
+        tetraminoes.moveDown();
+        dropStart = Date.now();
+    }
+    if(!gameOver){
+    requestAnimationFrame(drop);
+    }
 }
+
+drop();
 
 
 

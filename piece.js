@@ -31,7 +31,7 @@ class Tetraminoes{
         }//end first loop
     }//end function
 
-    //With this function undraw tetrominow by type, and coordiantes
+    //With this function undraw tetrominos by type, and coordiantes
     undrawTetrominos(){
         for(let i = 0; i<this.activePosition.length;i++){
             for(let j = 0; j<this.activePosition.length; j++){
@@ -46,7 +46,7 @@ class Tetraminoes{
 
     //Movement of the pieces
     moveLeft(){
-        if(!this.collision(-1,0)){
+        if(!this.collision(-1,0, this.position)){
             this.undrawTetrominos();
             this.x--;
             this.drawTetrominos();
@@ -54,7 +54,7 @@ class Tetraminoes{
 
     }
     moveRight(){
-        if(!this.collision(1,0)){
+        if(!this.collision(1,0, this.position)){
             this.undrawTetrominos();
             this.x++;
             this.drawTetrominos();
@@ -62,26 +62,47 @@ class Tetraminoes{
 
     }
     moveDown(){
-        if(!this.collision(0,1)){
+        if(!this.collision(0,1, this.position)){
             this.undrawTetrominos();
             this.y++;
             this.drawTetrominos();
         }else{
             this.lock();
             tetraminoes = generateTetra();
+            this.checkLastRow();
+        }
+
+    }
+    //Rotation of the tetramino
+    rotateRight(){
+        let nextPosition = (this.position+1)%this.type.length;
+        if(!this.collision(0,0, nextPosition)){
+            this.undrawTetrominos();
+            this.position = (this.position+1)%this.type.length;
+            this.activePosition = this.type[this.position];
+            this.drawTetrominos();
+        } else {
+            if(this.x<cols/2){
+                this.moveRight();
+                this.rotateRight()
+            } else {
+                this.moveLeft();
+                this.rotateRight()
+            }
         }
 
     }
     //Collision detection function
-    collision(adX, adY){
-        for(let i = 0; i<this.activePosition.length;i++){
-            for(let j = 0; j<this.activePosition.length; j++){
-                if(this.activePosition[i][j]===1){
+    collision(adX, adY, rotation){
+        for(let i = 0; i<this.type[rotation].length;i++){
+            for(let j = 0; j<this.type[rotation].length; j++){
+                if(this.type[rotation][i][j]===1){
+                    if(this.y+i+adY<0){continue;}
                     if(this.x +j+adX<0 || this.x+j+adX>=cols || this.y+i+adY>=rows){
                         return true;
                     }
-                    if(this.y+i+adY<0){continue;}
-                    if(boardArr[this.y+i+adY][this.x+j]!==empty){
+
+                    if(boardArr[this.y+i+adY][this.x+j+adX]!==empty){
                         return true;
                      }
                 }
@@ -89,18 +110,15 @@ class Tetraminoes{
         }//end first loop
         return false;
     }
-    //Rotation of the tetramino
-    rotateRight(){
-        this.undrawTetrominos();
-        this.position = (this.position+1)%this.type.length;
-        this.activePosition = this.type[this.position];
-        this.drawTetrominos();
-    }
-
     //Lock the piece
     lock(){
         for(let i = 0; i<this.activePosition.length;i++){
             for(let j = 0; j<this.activePosition.length; j++){
+                if(this.y+i<0){
+                    gameOver = true;
+                    alert('lol');
+                    break;
+                }
                 if(this.activePosition[i][j]===1){
                     boardArr[this.y+i][this.x+j] = this.color;
                     ctx.fillStyle = boardArr[this.y+i][this.x+j];
@@ -108,6 +126,26 @@ class Tetraminoes{
                 }//end if
             }//end 2nd loop
         }//end first loop
-        console.table(boardArr);
+    }
+    //Empty the full row
+    checkLastRow(){
+        for(let i = 0; i < rows; i++){
+            let isRowFull = true;
+            for(let j = 0; j < cols; j++) {
+                isRowFull = isRowFull && (boardArr[i][j]!=empty);
+            }
+            if(isRowFull){
+                for(let y = i;y>1;y--){
+                    for(let x = 0; x<cols; x++){
+                        boardArr[y][x] = boardArr[y-1][x];
+                        drawSquare(x,y,boardArr[y][x]);
+                    }
+                }
+                for(let x = 0; x<cols; x++){
+                    boardArr[0][x] = empty;
+                }
+                console.table(boardArr);
+            }
+        }
     }
 }
