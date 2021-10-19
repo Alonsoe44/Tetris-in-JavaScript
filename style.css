@@ -1,19 +1,12 @@
 *{
-    background-color: orange;
+    background-color: green;
 }
+#mainColums{
 
-.grid{
-    display: grid;
-    grid-template-columns: 320px 200px;
 }
-/*I need to revise this code later cuz i dont understand*/
-.right-column{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .game-board{
     border: solid 2px;
     color: black;
+    margin: auto;
+
 }
