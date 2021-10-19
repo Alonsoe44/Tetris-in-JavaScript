@@ -1,5 +1,5 @@
 *{
-
+    background-color: orange;
 }
 
 .grid{
@@ -9,7 +9,6 @@
 /*I need to revise this code later cuz i dont understand*/
 .right-column{
     display: flex;
-    flex-direction: column;
     flex-direction: column;
     justify-content: space-between;
 }

@@ -116,7 +116,7 @@ class Tetraminoes{
             for(let j = 0; j<this.activePosition.length; j++){
                 if(this.y+i<0){
                     gameOver = true;
-                    alert('lol');
+                    alert('Game Over');
                     break;
                 }
                 if(this.activePosition[i][j]===1){
