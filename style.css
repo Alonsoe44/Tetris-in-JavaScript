@@ -4,9 +4,16 @@
 #mainColums{
 
 }
+#hold{
+
+    background-color: blue;
+
+}
+
+#next{
+    background-color: red;
+
+}
 .game-board{
-    border: solid 2px;
-    color: black;
-    margin: auto;
 
 }

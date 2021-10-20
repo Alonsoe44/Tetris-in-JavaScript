@@ -2,7 +2,11 @@
 //This is the board grid 
 const cols = 10;
 const rows = 20;
-const blockSize= 30;
+const hcols = 4;
+const hrows = 4;
+const ncols = 4;
+const nrows = 16;
+const blockSize= 33;
 const empty = 'white';
 const Z = [[
         [1,1,0],
@@ -99,6 +103,12 @@ const L = [
 ];
 
 const O = [
+    [
+        [0, 0, 0, 0],
+        [0, 1, 1, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0],
+    ],
     [
         [0, 0, 0, 0],
         [0, 1, 1, 0],
