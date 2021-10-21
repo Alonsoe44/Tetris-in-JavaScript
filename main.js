@@ -97,7 +97,12 @@ console.table(boardArr);
 
 //let tetraminoes = new Tetraminoes(ObjectArray[0].type,ObjectArray[0].color);
 let ObjectArr = [generateNext(),generateNext(),generateNext()]
+
 let tetraminoes = generateTetra();
+
+ObjectArr[0].drawTetrominos();
+ObjectArr[1].drawTetrominos();
+ObjectArr[2].drawTetrominos();
 
 
 
@@ -154,10 +159,7 @@ function drop(){
     }
 }
 
-drop();
-ObjectArr[0].drawTetrominos();
-ObjectArr[1].drawTetrominos();
-ObjectArr[2].drawTetrominos();
+//drop();
 
 
 

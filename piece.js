@@ -1,38 +1,28 @@
 //With this class Tetrominoes I will generate the instances and their properties
 class Tetraminoes {
     constructor(type, color) {
-        // The type of tetromino
-        this.type = type;
-        // The position or rotation
-        this.position = 0;
-        //Color property
-        this.color = color;
-        //The type and position in realtime while playing
-        this.activePosition = this.type[this.position];
-
-        //These are the coordinates where all tetrominoes start
-        this.x = 3;
+        this.type = type;           // The type of tetromino
+        this.position = 0;          // The position or rotation
+        this.color = color;         // Color property
+        this.activePosition = this.type[this.position]; //The type and position in realtime while playing
+        this.x = 3;                 //These are the coordinates where all tetrominos start
         this.y = -2;
     }
 
     //Methods for the tetraminoes
 
     //Draw and undraw
-    //With this function draw tetrominow by type, and coordiantes
-    drawTetrominos() {
+    drawTetrominos() { //With this function draw tetrominos by type, and coordinates
         for (let i = 0; i < this.activePosition.length; i++) {
             for (let j = 0; j < this.activePosition.length; j++) {
                 if (this.activePosition[i][j] === 1) {
                     drawSquare(j + this.x, i + this.y, this.color);
-                    ctx.strokeStyle = this.color;
-                    ctx.strokeRect(j + this.x, i + this.y, 1, 1);
                 }//end if
             }//end 2nd loop
         }//end first loop
     }//end function
 
-    //With this function undraw tetrominos by type, and coordiantes
-    undrawTetrominos() {
+    undrawTetrominos() { //With this function undraw tetrominos by type, and coordinates
         for (let i = 0; i < this.activePosition.length; i++) {
             for (let j = 0; j < this.activePosition.length; j++) {
                 if (this.activePosition[i][j] === 1) {
@@ -51,18 +41,14 @@ class Tetraminoes {
             this.x--;
             this.drawTetrominos();
         }
-
     }
-
     moveRight() {
         if (!this.collision(1, 0, this.position)) {
             this.undrawTetrominos();
             this.x++;
             this.drawTetrominos();
         }
-
     }
-
     moveDown() {
         if (!this.collision(0, 1, this.position)) {
             this.undrawTetrominos();
@@ -72,7 +58,9 @@ class Tetraminoes {
             this.lock();
             this.emptyAndDrawNextBoard();
             this.checkLastRow();
+            console.table(boardArr);
             holdUsedThisTurn = false;
+            drawBoard(rows,cols,boardArr,drawSquare);
         }
 
     }
@@ -108,7 +96,6 @@ class Tetraminoes {
                     if (this.x + j + adX < 0 || this.x + j + adX >= cols || this.y + i + adY >= rows) {
                         return true;
                     }
-
                     if (boardArr[this.y + i + adY][this.x + j + adX] !== empty) {
                         return true;
                     }
@@ -131,6 +118,8 @@ class Tetraminoes {
                     boardArr[this.y + i][this.x + j] = this.color;
                     ctx.fillStyle = boardArr[this.y + i][this.x + j];
                     ctx.fillRect(this.x + j, this.y + i, 1, 1);
+                    ctx.strokeStyle = 'rgb(156, 156, 156)';
+                    ctx.strokeRect(j + this.x, i + this.y, 1, 1);
                 }//end if
             }//end 2nd loop
         }//end first loop
@@ -163,18 +152,16 @@ class Tetraminoes {
         holdUsedThisTurn = true;
         if(!holdHasSomething) {
             holdHasSomething = true;
-            this.undrawTetrominos();
-            //Erases all
-            drawBoard(hrows, hcols, holdArr, hdrawSquare);
+            this.undrawTetrominos();  //Erases the tetramino from the main board
+            drawBoard(hrows, hcols, holdArr, hdrawSquare); //Draws an empty board
             holdPiece[0] = [this.type, this.color];
-            this.drawTetrominosHold()
-            this.emptyAndDrawNextBoard()
+            this.drawTetrominosHold();
+            this.emptyAndDrawNextBoard();
         } else{
-
             this.undrawTetrominos();
             //Erases all
             drawBoard(hrows, hcols, holdArr, hdrawSquare);
-            this.drawTetrominosHold()
+            this.drawTetrominosHold();
             //goes the game
             tetraminoes = new Tetraminoes(holdPiece[0][0],holdPiece[0][1]);
             holdPiece[0] = [this.type, this.color];
@@ -182,12 +169,10 @@ class Tetraminoes {
     }
 
     drawTetrominosHold() {
-        for (let i = 0; i < this.type[1].length; i++) {
-            for (let j = 0; j < this.type[1].length; j++) {
+        for (let i = 0; i < this.activePosition.length; i++) {
+            for (let j = 0; j < this.activePosition.length; j++) {
                 if (this.type[1][i][j] === 1) {
-                    hdrawSquare(j, i, this.color);
-                    ctxHold.strokeStyle = this.color;
-                    ctxHold.strokeRect(j, i, 1, 1);
+                    hdrawSquare(j, i+1, this.color);
                 }//end if
             }//end 2nd loop
         }//end first loop

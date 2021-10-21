@@ -3,7 +3,7 @@
 const cols = 10;
 const rows = 20;
 const hcols = 4;
-const hrows = 4;
+const hrows = 6;
 const ncols = 4;
 const nrows = 16;
 const blockSize= 33;
