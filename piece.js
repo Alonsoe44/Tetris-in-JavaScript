@@ -70,17 +70,9 @@ class Tetraminoes {
             this.drawTetrominos();
         } else {
             this.lock();
-            tetraminoes = new Tetraminoes(ObjectArr[0].type,ObjectArr[0].color);
-            drawBoard(nrows,ncols,nextArr,ndrawSquare);
-            ObjectArr[0]= ObjectArr[1];
-            ObjectArr[1] = ObjectArr[2];
-            ObjectArr[2] = generateLast();
-            ObjectArr[0].drawTetrominos();
-            ObjectArr[1].drawTetrominos();
-            ObjectArr[2].drawTetrominos();
-
-
+            this.emptyAndDrawNextBoard();
             this.checkLastRow();
+            holdUsedThisTurn = false;
         }
 
     }
@@ -168,13 +160,25 @@ class Tetraminoes {
 
     //Let's hold that piece
     hold() {
-        //push this piece into the next array
-        this.undrawTetrominos();
-        //Erases all
-        drawBoard(hrows, hcols, holdArr, hdrawSquare);
-        holdPiece[0] = [this.type, this.color];
-        this.drawTetrominosHold()
-        tetraminoes = generateTetra();
+        holdUsedThisTurn = true;
+        if(!holdHasSomething) {
+            holdHasSomething = true;
+            this.undrawTetrominos();
+            //Erases all
+            drawBoard(hrows, hcols, holdArr, hdrawSquare);
+            holdPiece[0] = [this.type, this.color];
+            this.drawTetrominosHold()
+            this.emptyAndDrawNextBoard()
+        } else{
+
+            this.undrawTetrominos();
+            //Erases all
+            drawBoard(hrows, hcols, holdArr, hdrawSquare);
+            this.drawTetrominosHold()
+            //goes the game
+            tetraminoes = new Tetraminoes(holdPiece[0][0],holdPiece[0][1]);
+            holdPiece[0] = [this.type, this.color];
+        }
     }
 
     drawTetrominosHold() {
@@ -188,4 +192,17 @@ class Tetraminoes {
             }//end 2nd loop
         }//end first loop
     }//end function
+    emptyAndDrawNextBoard() {
+        tetraminoes = new Tetraminoes(ObjectArr[0].type,ObjectArr[0].color);
+        drawBoard(nrows,ncols,nextArr,ndrawSquare);
+        ObjectArr[0]= ObjectArr[1];
+        ObjectArr[1].moveUp();
+        ObjectArr[1] = ObjectArr[2];
+        ObjectArr[2].moveUp();
+        ObjectArr[2] = generateLast();
+
+        ObjectArr[0].drawTetrominos();  //draws NextPieces
+        ObjectArr[1].drawTetrominos();
+        ObjectArr[2].drawTetrominos();
+    }
 }

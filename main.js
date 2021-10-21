@@ -37,6 +37,8 @@ let nextArr = [];
 let futurePieces = [];
 let gameOver = false;
 let que = -1;
+let holdHasSomething = false;
+let holdUsedThisTurn = false;
 
 //Now I create the  the board
 for(let i = 0; i < rows; i++){
@@ -97,9 +99,7 @@ console.table(boardArr);
 let ObjectArr = [generateNext(),generateNext(),generateNext()]
 let tetraminoes = generateTetra();
 
-ObjectArr[0].drawTetrominos();
-ObjectArr[1].drawTetrominos();
-ObjectArr[2].drawTetrominos();
+
 
 
 
@@ -114,8 +114,9 @@ document.addEventListener('keydown', function(event) {
             tetraminoes.moveRight();
             break;
         case 'ArrowUp':
-            tetraminoes.hold();
-            console.log('you can\'t move up');
+            if(!holdUsedThisTurn) {
+                tetraminoes.hold();
+            }
             break;
         case 'ArrowDown':
             tetraminoes.moveDown();
@@ -132,19 +133,13 @@ function generateTetra(){
 
 function generateNext(){
     let randomN = Math.floor(Math.random()*tetraminousArr.length);
-    let yPosition = [0,5,9];
-    que = (que+1)%yPosition.length;
-    console.log(que);
-    console.log('pls see me que');
+    let yPosition = [1,6,11];
+    que = (que + 1) % yPosition.length;
     return new tetraminoNext(tetraminousArr[randomN][0],tetraminousArr[randomN][1],yPosition[que]);
 }
 function generateLast(){
     let randomN = Math.floor(Math.random()*tetraminousArr.length);
-    let yPosition = [0,5,9];
-    que = (que+1)%yPosition.length;
-    console.log(que);
-    console.log('pls see me que');
-    return new tetraminoNext(tetraminousArr[randomN][0],tetraminousArr[randomN][1],1);
+    return new tetraminoNext(tetraminousArr[randomN][0],tetraminousArr[randomN][1],11);
 }
 //Time to drop the pieces
 function drop(){
@@ -160,6 +155,9 @@ function drop(){
 }
 
 drop();
+ObjectArr[0].drawTetrominos();
+ObjectArr[1].drawTetrominos();
+ObjectArr[2].drawTetrominos();
 
 
 
