@@ -1,31 +1,3 @@
-//Now I select the html elements intro variables
-const canvas = document.getElementById('board');
-const holdBoard = document.getElementById('hold');
-const nextBoard = document.getElementById('next');
-//Context
-const ctxHold = holdBoard.getContext('2d');
-const ctxNext = nextBoard.getContext('2d');
-const ctx = canvas.getContext('2d');
-//Tetraminous Array
-const tetraminousArr = [[Z,'red'],[I,'cyan'],[J,'orange'],[L,'blue'],[O,'yellow'],[S,'green'],[T,'purple']];
-//Now the canvas has a grid with the rules.js constants
-ctx.canvas.width = cols*blockSize;
-ctx.canvas.height = rows*blockSize;
-
-ctxHold.canvas.width = hcols*blockSize;
-ctxHold.canvas.heigth = hrows*blockSize;
-
-ctxNext.canvas.width = ncols*blockSize;
-ctxNext.canvas.heigth = nrows*blockSize;
-//Scale property to scale the draw WxH****This is important because now all our units are : blocksize
-ctx.scale(blockSize, blockSize);
-ctxHold.scale(blockSize,blockSize);
-ctxNext.scale(blockSize,blockSize);
-
-//This is the line  Width
-ctxHold.lineWidth = 0.05;
-ctxNext.lineWidth = 0.05;
-ctx.lineWidth = 0.05;
 
 //Some key variables
 let holdPiece = [];
@@ -103,10 +75,6 @@ let tetraminoes = generateTetra();
 ObjectArr[0].drawTetrominos();
 ObjectArr[1].drawTetrominos();
 ObjectArr[2].drawTetrominos();
-
-
-
-
 
 //I add an even listener for the arrows press
 document.addEventListener('keydown', function(event) {

@@ -7,7 +7,7 @@
         <title>Document</title>
         <link href="style.css" rel= "stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script src='constants.js' defer></script>
+        <script src='constants.js' defer></script>
 		<script src='piece.js' defer></script>
         <script src='nextPiece.js' defer></script>
 		<script src='main.js' defer></script>
@@ -15,9 +15,27 @@
     </head>
     <body>
 		<div id='mainColums'>
-            <canvas id= 'hold' height="198px"></canvas>
-			<canvas id = 'board' class='game-board'></canvas>
-            <canvas id = 'next' height="528px"></canvas>
+            <div id='leftColum'>
+                <div id = 'instructionBox'>
+
+                </div>
+            </div>
+            <div id="mainGameDiv">
+                <canvas id= 'hold' height="168px"></canvas>
+                <canvas id = 'board' class='game-board'></canvas>
+                <a>49832748</a>
+                <canvas id = 'next' height="448px"></canvas>
+            </div>
+            <div id = 'rightColum'>
+                <div id = 'bottomRight'>
+                    <a>Tetris</a>
+                    <div id = ScoreIcon>
+                        <icon></icon>
+                        <a>987932483</a>
+                    </div>
+                    <a>Level 1</a>
+                    </div>
+            </div>
         </div>
     </body>
 </html>
