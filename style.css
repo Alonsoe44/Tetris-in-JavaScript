@@ -102,14 +102,93 @@
     background-color: #D1A214;
     grid-row: 2/span 1;
     display: grid;
-    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-rows: 150px 100px 100px;
     border-radius: 5%;
-    height: 90%;
+    height: 85%;
+    font-family: 'Gilroy-Heavy ☞';
+    font-size: 20px;
 }
 #movement{
     display: grid;
-    grid-template: ;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #D1A214;
+    border-radius: 5%;
+    padding-top: 5%;
+    margin: auto;
 }
+.key{
+    height: 60px;
+    width: 60px;
+    border-radius: 30%;
+}
+.instructionsLetter{
+    color: #D1A214;
+    background-color: transparent;
+}
+#wKey{
+    grid-column: 2 /span 1;
+    margin-bottom: 5px;
+}
+#wLetter{
+    margin-left: 30%;
+}
+#aKey{
+    grid-row: 2 /span 1;
+    margin-right: 10px;
+}
+#aLetter{
+    margin-left: 40%;
+}
+#sKey{
+    grid-row: 2 /span 1;
+    grid-column: 2/ span 1;
+}
+#sLetter{
+    margin-left: 40%;
+}
+#dKey{
+    grid-row: 2 /span 1;
+    grid-column: 3/ span 1;
+    margin-left: 3px;
+}
+#dLetter{
+    margin-left: 40%;
+}
+#jKey{
+    margin-left: 30%;
+}
+#jLetter{
+    margin-left: 40%;
+}
+#nKey{
+    margin-left: 30%;
+}
+#nLetter{
+    margin-left: 40%;
+}
+#mKey{
+    margin-left: 5px;
+}
+#mLetter{
+    margin-left: 40%;
+}
+
+#especialKeys{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #D1A214;
+    padding-top: 15%;
+}
+#helpButtons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: transparent;
+    padding-top: 20%;
+}
+
+
+
 
 #mainGameDiv{
     grid-column: 4/span 6;
@@ -133,6 +212,7 @@
 }
 #mainBoard{
     border: solid 4px #403221;
+    border-radius: 5px;
 }
 #currentScore{
     font-family: 'Gilroy-Bold ☞';
@@ -147,10 +227,20 @@
     font-size: 80px;
 }
 #ScoreBox{
+    display: grid;
+    grid-template-columns: 30% 70%;
     font-family: 'Gilroy-Light ☞';
-    font-size: 20px;
+    font-style: italic;
+    font-size: 30px;
 }
 #tetrisText{
     font-family: 'Gilroy-Light ☞';
     font-size: 64px;
 }
+.material-icons{
+    background-color: transparent;
+    color: #403221;
+    font-size: 50px;
+    margin-left: 25%;
+}
+

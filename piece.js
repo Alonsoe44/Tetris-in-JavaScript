@@ -63,7 +63,6 @@ class Tetraminoes {
             this.lock();
             this.emptyAndDrawNextBoard();
             this.checkLastRow();
-            console.table(boardArr);
             holdUsedThisTurn = false;
             drawBoard(rows,cols,boardArr,drawSquare);
         }
@@ -139,6 +138,9 @@ class Tetraminoes {
             }
             if (isRowFull) {
                 setScore(200);
+                if(intScore/lvlPoints>=1){
+                    setNewLevel();
+                }
                 for (let y = i; y > 1; y--) {
                     for (let x = 0; x < cols; x++) {
                         boardArr[y][x] = boardArr[y - 1][x];

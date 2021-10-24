@@ -64,7 +64,7 @@ function ndrawSquare(x,y,color){
     ctxNext.strokeStyle = 'rgb(156, 156, 156)';
     ctxNext.strokeRect(x, y, 1, 1);
 }
-console.table(boardArr);
+
 //Creation of tetramino object
 
 //let tetraminoes = new Tetraminoes(ObjectArray[0].type,ObjectArray[0].color);
@@ -78,7 +78,6 @@ ObjectArr[2].drawTetrominos();
 
 //I add an even listener for the arrows press
 document.addEventListener('keydown', function(event) {
-    const key = event.key;
     switch (event.key){
         case 'a':
             if(tetraminoes.y>=-1){
@@ -102,7 +101,7 @@ document.addEventListener('keydown', function(event) {
         case 'Enter':
 
             break;
-        case 'b':
+        case 'j':
             if(!holdUsedThisTurn) {
                 tetraminoes.hold();
             }
@@ -116,7 +115,6 @@ document.addEventListener('keydown', function(event) {
             tetraminoes.rotateRight();
             break;
         default:
-            console.log(event.key);
             break
     }
 });

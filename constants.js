@@ -196,7 +196,15 @@ ctxNext.lineWidth = 0.05;
 ctx.lineWidth = 0.05;
 //This is for hte score
 const score = document.getElementById('currentScore');
-
+const level = document.getElementById('levelTxt');
+let lvlCount = 1;
+let lvlPoints = 1000;
+function setNewLevel(){
+    dropTime -= 100;
+    lvlCount ++;
+    lvlPoints+= 1000;
+    level.innerHTML = 'Level ' + lvlCount;
+}
 function setScore(newScore){
     intScore = intScore+newScore;
     score.innerHTML = intScore;
