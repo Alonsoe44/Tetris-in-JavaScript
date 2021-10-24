@@ -1,12 +1,12 @@
 
 //Some key variables
+let intScore = 0;
 let holdPiece = [];
 let dropStart = Date.now();
 let dropTime = 1000;
 let boardArr = [];
 let holdArr = [];
 let nextArr = [];
-let futurePieces = [];
 let gameOver = false;
 let que = -1;
 let holdHasSomething = false;
@@ -80,22 +80,44 @@ ObjectArr[2].drawTetrominos();
 document.addEventListener('keydown', function(event) {
     const key = event.key;
     switch (event.key){
-        case 'ArrowLeft':
-            tetraminoes.moveLeft();
+        case 'a':
+            if(tetraminoes.y>=-1){
+                tetraminoes.moveLeft();
+            }
             break;
-        case 'ArrowRight':
-            tetraminoes.moveRight();
+        case 'd':
+            if(tetraminoes.y>=-1){
+                tetraminoes.moveRight();
+            }
             break;
-        case 'ArrowUp':
+        case 'w':
+            tetraminoes.inGround = false;
+            for(let i = 0; i<rows && !tetraminoes.inGround; i++){
+                tetraminoes.moveDown();
+            }
+            break;
+        case 's':
+            tetraminoes.moveDown();
+            break;
+        case 'Enter':
+
+            break;
+        case 'b':
             if(!holdUsedThisTurn) {
                 tetraminoes.hold();
             }
             break;
-        case 'ArrowDown':
-            tetraminoes.moveDown();
+        case 'n':
             break;
-        case 'Enter':
+        case 'm':
             tetraminoes.rotateRight();
+            break;
+        case ' ':
+            tetraminoes.rotateRight();
+            break;
+        default:
+            console.log(event.key);
+            break
     }
 });
 //Random tetramino generator function
@@ -128,6 +150,8 @@ function drop(){
 }
 
 //drop();
+
+//https://www.youtube.com/watch?v=om5yYcg1lT4
 
 
 

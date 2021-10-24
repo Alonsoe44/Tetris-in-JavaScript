@@ -39,7 +39,7 @@ class tetraminoNext {
                     drawSquare(j + this.x, i + this._y, empty);
                     ctxNext.strokeStyle = 'rgb(156, 156, 156)';
                     ctxNext.strokeRect(j + this.x, i + this._y, 1, 1);
-                }//end if
+                }//end if 
             }//end 2nd loop
         }//end first loop
     }//end function

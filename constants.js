@@ -10,7 +10,7 @@ const ncols = 4;
 const nrows = 16;
 const blockSize= 42;
 const scaleNum = blockSize/1.5;
-const empty = 'white';
+const empty = '#F6D7BB';
 const Z = [[
         [1,1,0],
         [0,1,1],
@@ -166,16 +166,16 @@ const T = [
     ]
 ];
 //Now I select the html elements intro variables
-//I HAVE A BIG BUG THAT YOU CAN DIE IF YOU MOVE YOUR PIECE WHEN GENERATED LOOK FOR KEYLISTENER AND TURN NO IF Y<0
-const canvas = document.getElementById('board');
-const holdBoard = document.getElementById('hold');
-const nextBoard = document.getElementById('next');
+
+const canvas = document.getElementById('mainBoard');
+const holdBoard = document.getElementById('holdBoard');
+const nextBoard = document.getElementById('nextBoard');
 //Context
 const ctxHold = holdBoard.getContext('2d');
 const ctxNext = nextBoard.getContext('2d');
 const ctx = canvas.getContext('2d');
 //Tetraminous Array
-const tetraminousArr = [[Z,'red'],[I,'cyan'],[J,'orange'],[L,'blue'],[O,'yellow'],[S,'green'],[T,'purple']];
+const tetraminousArr = [[Z,'#A7514A'],[I,'#13ACC3'],[J,'#3F52B4'],[L,'#DA753A'],[O,'#FFC103'],[S,'#4AA74F'],[T,'#934D98']];
 //Now the canvas has a grid with the rules.js constants
 ctx.canvas.width = cols*blockSize;
 ctx.canvas.height = rows*blockSize;
@@ -194,3 +194,11 @@ ctxNext.scale(scaleNum,scaleNum);
 ctxHold.lineWidth = 0.05;
 ctxNext.lineWidth = 0.05;
 ctx.lineWidth = 0.05;
+//This is for hte score
+const score = document.getElementById('currentScore');
+
+function setScore(newScore){
+    intScore = intScore+newScore;
+    score.innerHTML = intScore;
+}
+

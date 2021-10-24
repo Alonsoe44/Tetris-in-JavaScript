@@ -7,6 +7,7 @@ class Tetraminoes {
         this.activePosition = this.type[this.position]; //The type and position in realtime while playing
         this.x = 3;                 //These are the coordinates where all tetrominos start
         this.y = -2;
+        this.inGround = true;
     }
 
     //Methods for the tetraminoes
@@ -37,16 +38,20 @@ class Tetraminoes {
     //Movement of the pieces
     moveLeft() {
         if (!this.collision(-1, 0, this.position)) {
-            this.undrawTetrominos();
-            this.x--;
-            this.drawTetrominos();
+            if(!(this.type==Z && this.x==0&&this.y==-1)){
+                this.undrawTetrominos();
+                this.x--;
+                this.drawTetrominos();
+            }
         }
     }
     moveRight() {
         if (!this.collision(1, 0, this.position)) {
-            this.undrawTetrominos();
-            this.x++;
-            this.drawTetrominos();
+            if(!(this.type==S && this.x==7&&this.y==-1)){
+                this.undrawTetrominos();
+                this.x++;
+                this.drawTetrominos();
+            }
         }
     }
     moveDown() {
@@ -133,6 +138,7 @@ class Tetraminoes {
                 isRowFull = isRowFull && (boardArr[i][j] !== empty);
             }
             if (isRowFull) {
+                setScore(200);
                 for (let y = i; y > 1; y--) {
                     for (let x = 0; x < cols; x++) {
                         boardArr[y][x] = boardArr[y - 1][x];
@@ -142,7 +148,6 @@ class Tetraminoes {
                 for (let x = 0; x < cols; x++) {
                     boardArr[0][x] = empty;
                 }
-                console.table(boardArr);
             }
         }
     }
@@ -166,6 +171,7 @@ class Tetraminoes {
             tetraminoes = new Tetraminoes(holdPiece[0][0],holdPiece[0][1]);
             holdPiece[0] = [this.type, this.color];
         }
+        drawBoard(rows,cols,boardArr,drawSquare);
     }
 
     drawTetrominosHold() {

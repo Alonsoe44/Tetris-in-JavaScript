@@ -14,27 +14,70 @@
 		<link href="style.css" rel='stylesheet'>
     </head>
     <body>
-		<div id='mainColums'>
-            <div id='leftColum'>
-                <div id = 'instructionBox'>
+        <div id = 'bigContainer'>
+            <div id='mainColums'>
+                <div id='leftColum'>
+                    <div id = 'instructionBox'>
+                        <div id = 'movement'>
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
 
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
+
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
+                        </div>
+                        <div id = 'especialKeys'>
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
+                        </div>
+                        <div id = 'helpButtons'>
+                            <a>Info</a>
+                            <a>Volume icon</a>
+                            <div class = 'key'>
+                                <a class = 'instructions letter'>w</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="mainGameDiv">
-                <canvas id= 'hold' height="168px"></canvas>
-                <canvas id = 'board' class='game-board'></canvas>
-                <a>49832748</a>
-                <canvas id = 'next' height="448px"></canvas>
-            </div>
-            <div id = 'rightColum'>
-                <div id = 'bottomRight'>
-                    <a>Tetris</a>
-                    <div id = ScoreIcon>
-                        <icon></icon>
-                        <a>987932483</a>
+                <div id="mainGameDiv">
+                    <div id = 'holdBox'>
+                        <a>Hold</a>
+                        <canvas id= 'holdBoard' height="168px"></canvas>
                     </div>
-                    <a>Level 1</a>
+                    <div id = 'score&mainBoardCont'>
+                        <canvas id = 'mainBoard'></canvas>
+                        <a id = 'currentScore'>00000000</a>
                     </div>
+                    <div id = 'nextBox'>
+                        <a>Next</a>
+                        <canvas id = 'nextBoard' height="448px"></canvas>
+                    </div>
+                </div>
+                <div id = 'rightColum'>
+                    <div id = 'bottomRight'>
+                        <a id = 'tetrisText'>Tetris</a>
+                        <div id = ScoreBox>
+                            <icon></icon>
+                            <a>987932483</a>
+                        </div>
+                        <a id= 'levelTxt'>Level 1</a>
+                        </div>
+                </div>
             </div>
         </div>
     </body>
