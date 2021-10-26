@@ -115,8 +115,13 @@ class Tetraminoes {
             for (let j = 0; j < this.activePosition.length; j++) {
                 if (this.y + i < 0) {
                     gameOver = true;
-                    alert('Game Over');
-                    break;
+                    ctx.font = "3px Gilroy-Bold ☞";
+                    ctx.fillStyle = '#403221';
+                    ctx.fillText("Game", 1, 8);
+                    ctx.fillText("Over", 1, 11);
+                    ctx.font = "1.5px Gilroy-Bold ☞";
+                    ctx.fillText("Press r", 3, 14);
+                    setBestScore();
                 }
                 if (this.activePosition[i][j] === 1) {
                     boardArr[this.y + i][this.x + j] = this.color;

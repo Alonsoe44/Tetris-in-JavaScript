@@ -8,7 +8,7 @@ const hcols = 4;
 const hrows = 6;
 const ncols = 4;
 const nrows = 16;
-const blockSize= 42;
+const blockSize= 30;
 const scaleNum = blockSize/1.5;
 const empty = '#F6D7BB';
 const Z = [[
@@ -197,13 +197,19 @@ ctx.lineWidth = 0.05;
 //This is for hte score
 const score = document.getElementById('currentScore');
 const level = document.getElementById('levelTxt');
+const bestScore = document.getElementById('bestScore');
 let lvlCount = 1;
-let lvlPoints = 1000;
+let lvlPoints = 500;
 function setNewLevel(){
     dropTime -= 100;
     lvlCount ++;
-    lvlPoints+= 1000;
+    lvlPoints+= 500;
     level.innerHTML = 'Level ' + lvlCount;
+}
+function setBestScore(){
+    if(intScore>bestScore.innerHTML){
+        bestScore.innerHTML = intScore;
+    }
 }
 function setScore(newScore){
     intScore = intScore+newScore;

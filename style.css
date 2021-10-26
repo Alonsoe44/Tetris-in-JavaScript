@@ -47,68 +47,39 @@
 }
 #bigContainer{
     box-sizing: border-box;
-    padding-top: 30px;
+    padding-top: 10px;
 }
+
+
+
 #mainColums{
     display: grid;
-    width: 100vw;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 30px;
+    height: 90vh;
 }
-#holdBox{
-    background-color: red;
-    display: grid;
-    height: 196px;
-    width: 112px;
-    grid-template-rows: 28px 168px;
-    border: solid 4px #403221;
-    border-radius: 5px;
-}
-#holdBox a{
-    font-family: 'Gilroy-Medium ☞';
-    font-size: 26px;
-    background-color: #F6D7BB;
-    text-align: center;
-}
-#holdBoard{
 
-    background-color: blue;
-
-}
-#nextBox{
-    background-color: #FFF3E3;
-    display: grid;
-    grid-template-rows: 28px 448px;
-    border: solid 4px #403221;
-    height: 476px;
-    width: 112px;
-    border-radius: 5px;
-}
-#nextBox a{
-    font-family: 'Gilroy-Medium ☞';
-    background-color: #F6D7BB;
-    font-size: 26px;
-    text-align: center;
-}
-#nextBoard{
-    background-color: red;
-}
 #leftColum{
     grid-column: 2/span 2;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
 }
 #instructionBox{
     background-color: #D1A214;
     grid-row: 2/span 1;
     display: grid;
+    grid-template-areas: 'top'
+                         'mid'
+                          'bottom';
     grid-template-rows: 150px 100px 100px;
     border-radius: 5%;
-    height: 85%;
+    height: 380px;
     font-family: 'Gilroy-Heavy ☞';
-    font-size: 20px;
+    font-size: 15px;
+    z-index: 5;
 }
 #movement{
+    grid-area: top;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -118,8 +89,8 @@
     margin: auto;
 }
 .key{
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border-radius: 30%;
 }
 .instructionsLetter{
@@ -173,8 +144,8 @@
 #mLetter{
     margin-left: 40%;
 }
-
 #especialKeys{
+    grid-area: mid;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #D1A214;
@@ -191,24 +162,35 @@
 
 
 #mainGameDiv{
-    grid-column: 4/span 6;
+    grid-column: 4/span 5;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    width: 470px;
+    margin: auto;
+    grid-template-columns: 80px 300px 80px;
+    grid-gap: 25px;
 }
-#rightColum{
-    grid-column: 10/span 2;
+#holdBox{
+    background-color: #F6D7BB;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    height: 148px;
+    width: 80px;
+    grid-template-rows: 28px 168px;
+    border: solid 4px #403221;
+    border-radius: 5px;
 }
-#bottomRight{
-    grid-row: 2/span 1;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    text-align: right;
+#holdBox a{
+    font-family: 'Gilroy-Medium ☞';
+    font-size: 26px;
+    background-color: #F6D7BB;
+    text-align: center;
 }
+#holdBoard{
+    background-color: blue;
+}
+
 #score\&mainBoardCont{
     display: grid;
-    grid-template-rows: 94% 4%;
+    grid-template-rows: 607.5px 20px;
 }
 #mainBoard{
     border: solid 4px #403221;
@@ -217,30 +199,69 @@
 #currentScore{
     font-family: 'Gilroy-Bold ☞';
     font-style: italic;
-    font-size: 46px;
-    color: #FFF3E3;
-
-}
-#levelTxt{
-    font-family: 'Gilroy-Medium ☞';
-    font-style: italic;
-    font-size: 80px;
-}
-#ScoreBox{
-    display: grid;
-    grid-template-columns: 30% 70%;
-    font-family: 'Gilroy-Light ☞';
-    font-style: italic;
     font-size: 30px;
+    padding: 0;
+    color: #FFF3E3;
+    z-index: 5;
+}
+
+#nextBox{
+    background-color: #FFF3E3;
+    display: grid;
+    grid-template-rows: 28px 448px;
+    border: solid 4px #403221;
+    height: 348px;
+    width: 80px;
+    border-radius: 5px;
+    z-index: 5;
+}
+#nextBox a{
+    font-family: 'Gilroy-Medium ☞';
+    background-color: #F6D7BB;
+    font-size: 26px;
+    text-align: center;
+}
+#nextBoard{
+    background-color: red;
+}
+
+
+
+
+#rightColum{
+    grid-column: 10/span 2;
+    display: grid;
+    grid-template-rows: 1fr;
+}
+#bottomRight{
+    grid-row: 1/span 1;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: right;
+    align-items: center;
 }
 #tetrisText{
     font-family: 'Gilroy-Light ☞';
     font-size: 64px;
 }
+
+#levelTxt{
+    font-family: 'Gilroy-Medium ☞';
+    font-style: italic;
+    font-size: 50px;
+}
+#ScoreBox{
+    display: grid;
+    grid-template-columns: 55px 70%;
+    font-family: 'Gilroy-Light ☞';
+    font-style: italic;
+    font-size: 30px;
+}
+
 .material-icons{
     background-color: transparent;
     color: #403221;
-    font-size: 50px;
+    font-size: 40px;
     margin-left: 25%;
 }
 

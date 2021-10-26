@@ -31,10 +31,7 @@ for(let i = 0; i < nrows; i++){
         nextArr[i][j] = empty;
     }
 }
-//Function that draws the board:
-drawBoard(rows,cols,boardArr,drawSquare);
-drawBoard(hrows,hcols,holdArr,hdrawSquare);
-drawBoard(nrows,ncols,nextArr,ndrawSquare);
+
 function drawBoard(r,c,arr,drawSq){
     for(let i = 0; i<r; i++){
         for(let j = 0; j<c; j++){
@@ -64,17 +61,61 @@ function ndrawSquare(x,y,color){
     ctxNext.strokeStyle = 'rgb(156, 156, 156)';
     ctxNext.strokeRect(x, y, 1, 1);
 }
-
-//Creation of tetramino object
-
 //let tetraminoes = new Tetraminoes(ObjectArray[0].type,ObjectArray[0].color);
+//********************Main execution******************************
 let ObjectArr = [generateNext(),generateNext(),generateNext()]
 
 let tetraminoes = generateTetra();
+drawBoard(rows,cols,boardArr,drawSquare);
+drawBoard(hrows,hcols,holdArr,hdrawSquare);
+drawBoard(nrows,ncols,nextArr,ndrawSquare);
+
 
 ObjectArr[0].drawTetrominos();
 ObjectArr[1].drawTetrominos();
 ObjectArr[2].drawTetrominos();
+//drop();
+
+function startNewGame(){
+    gameOver = true;
+    lvlCount = 1;
+    intScore = 0;
+    lvlPoints = 1000;
+    level.innerHTML = 'Level ' + lvlCount;
+    score.innerHTML = intScore;
+    for(let i = 0; i < rows; i++){
+        boardArr[i] = [];
+        for(let j = 0; j < cols; j++){
+            boardArr[i][j] = empty;
+        }
+    }
+    for(let i = 0; i < hrows; i++){
+        holdArr[i] = [];
+        for(let j = 0; j < hcols; j++){
+            holdArr[i][j] = empty;
+        }
+    }
+    for(let i = 0; i < nrows; i++){
+        nextArr[i] = [];
+        for(let j = 0; j < ncols; j++){
+            nextArr[i][j] = empty;
+        }
+    }
+    drawBoard(rows,cols,boardArr,drawSquare);
+    drawBoard(hrows,hcols,holdArr,hdrawSquare);
+    drawBoard(nrows,ncols,nextArr,ndrawSquare);
+    tetraminoes = generateTetra();
+    ObjectArr = [generateNext(),generateNext(),generateNext()]
+
+
+    ObjectArr[0].drawTetrominos();
+    ObjectArr[1].drawTetrominos();
+    ObjectArr[2].drawTetrominos();
+    gameOver = false;
+    drop();
+}
+
+
 
 //I add an even listener for the arrows press
 document.addEventListener('keydown', function(event) {
@@ -90,10 +131,7 @@ document.addEventListener('keydown', function(event) {
             }
             break;
         case 'w':
-            tetraminoes.inGround = false;
-            for(let i = 0; i<rows && !tetraminoes.inGround; i++){
-                tetraminoes.moveDown();
-            }
+            tetraminoes.rotateRight();
             break;
         case 's':
             tetraminoes.moveDown();
@@ -106,13 +144,17 @@ document.addEventListener('keydown', function(event) {
                 tetraminoes.hold();
             }
             break;
-        case 'n':
+        case ' ':
+            tetraminoes.inGround = false;
+            for(let i = 0; i<rows && !tetraminoes.inGround; i++){
+                tetraminoes.moveDown();
+            }
             break;
         case 'm':
             tetraminoes.rotateRight();
             break;
-        case ' ':
-            tetraminoes.rotateRight();
+        case 'r':
+            startNewGame();
             break;
         default:
             break
@@ -141,13 +183,14 @@ function drop(){
     if(diffStart_Call>dropTime){
         tetraminoes.moveDown();
         dropStart = Date.now();
+        console.log('active');
     }
     if(!gameOver){
         requestAnimationFrame(drop);
     }
 }
 
-//drop();
+
 
 //https://www.youtube.com/watch?v=om5yYcg1lT4
 
