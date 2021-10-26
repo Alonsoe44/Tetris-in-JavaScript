@@ -261,6 +261,9 @@
 
 
 @media only screen and (max-width: 1000px){
+    #bigContainer{
+        padding-top: 5px;
+    }
 
     #leftColum {
         grid-column: 1/span 1;
@@ -292,13 +295,14 @@
         heigth: 30px;
     }
     #mainGameDiv{
-        grid-column: 2/span 5;
+        grid-column: 2/span 10;
         padding-right: 70px;
     }
     #rightColum{
         grid-column: 3/span 2;
         height: 200px;
         position: absolute;
+        width: 80px;
         margin-top: 400px;
         padding-left:430px;
 
@@ -319,5 +323,9 @@
         font-family: 'Gilroy-Light ☞';
         font-style: italic;
         font-size: 20px;
+    }
+
+    #cup{
+        font-size: 18px;
     }
 }
