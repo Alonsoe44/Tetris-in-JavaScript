@@ -1,43 +1,35 @@
 /* #### Fonts for my Game #### */
-
 @font-face {
     font-family: 'Gilroy-Bold ☞';
     font-style: normal;
     font-weight: normal;
     src: local('Gilroy-Bold ☞'), url('fonts/Gilroy-Bold.woff') format('woff');
 }
-
-
 @font-face {
     font-family: 'Gilroy-Heavy ☞';
     font-style: normal;
     font-weight: normal;
     src: local('Gilroy-Heavy ☞'), url('fonts/Gilroy-Heavy.woff') format('woff');
 }
-
-
 @font-face {
     font-family: 'Gilroy-Light ☞';
     font-style: normal;
     font-weight: normal;
     src: local('Gilroy-Light ☞'), url('fonts/Gilroy-Light.woff') format('woff');
 }
-
-
 @font-face {
     font-family: 'Gilroy-Medium ☞';
     font-style: normal;
     font-weight: normal;
     src: local('Gilroy-Medium ☞'), url('fonts/Gilroy-Medium.woff') format('woff');
 }
-
-
 @font-face {
     font-family: 'Gilroy-Regular ☞';
     font-style: normal;
     font-weight: normal;
     src: local('Gilroy-Regular ☞'), url('fonts/Gilroy-Regular.woff') format('woff');
 }
+
 /*Normal css*/
 *{
     background-color: #F2BB13;
@@ -177,6 +169,7 @@
     grid-template-rows: 28px 168px;
     border: solid 4px #403221;
     border-radius: 5px;
+    z-index: 10;
 }
 #holdBox a{
     font-family: 'Gilroy-Medium ☞';
@@ -191,6 +184,7 @@
 #score\&mainBoardCont{
     display: grid;
     grid-template-rows: 607.5px 20px;
+    z-index: 10;
 }
 #mainBoard{
     border: solid 4px #403221;
@@ -265,3 +259,65 @@
     margin-left: 25%;
 }
 
+
+@media only screen and (max-width: 1000px){
+
+    #leftColum {
+        grid-column: 1/span 1;
+        position: absolute;
+    }
+    #instructionBox{
+        display: block;
+        margin-left: 30px;
+        width: 80px;
+
+    }
+    #helpButtons{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 130px 130px;
+        align-items: stretch;
+    }
+    .material-icons{
+        margin: auto;
+    }
+    #movement{
+        display: none;
+    }
+    #especialKeys{
+        display: none;
+    }
+    .key{
+        width: 30px;
+        heigth: 30px;
+    }
+    #mainGameDiv{
+        grid-column: 2/span 5;
+        padding-right: 70px;
+    }
+    #rightColum{
+        grid-column: 3/span 2;
+        height: 200px;
+        position: absolute;
+        margin-top: 400px;
+        padding-left:430px;
+
+    }
+    #tetrisText{
+        font-family: 'Gilroy-Light ☞';
+        font-size: 40px;
+    }
+
+    #levelTxt{
+        font-family: 'Gilroy-Medium ☞';
+        font-style: italic;
+        font-size: 30px;
+    }
+    #ScoreBox{
+        display: grid;
+        grid-template-columns: 55px 70%;
+        font-family: 'Gilroy-Light ☞';
+        font-style: italic;
+        font-size: 20px;
+    }
+}
