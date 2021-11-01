@@ -52,7 +52,9 @@
 }
 
 #leftColum{
+	//I think i have to remove the absolute;
     grid-column: 2/span 2;
+	position: absolute;
     display: grid;
     grid-template-rows: 1fr 2fr;
 }
