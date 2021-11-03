@@ -51,3 +51,27 @@ class tetraminoNext {
             this.drawTetrominos();
     }
 }
+
+// Css code for some of the resizing in mobyle
+
+/*  #tetrisText{
+        font-family: 'Gilroy-Light ☞';
+        font-size: 40px;
+    }
+
+    #levelTxt{
+        font-family: 'Gilroy-Medium ☞';
+        font-style: italic;
+        font-size: 30px;
+    }
+    #ScoreBox{
+        display: grid;
+        grid-template-columns: 55px 70%;
+        font-family: 'Gilroy-Light ☞';
+        font-style: italic;
+        font-size: 20px;
+    }
+
+    #cup{
+        font-size: 18px;
+    }*/

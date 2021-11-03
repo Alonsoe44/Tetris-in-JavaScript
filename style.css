@@ -260,18 +260,18 @@
 }
 
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1400px){
     #bigContainer{
         padding-top: 5px;
     }
 
     #leftColum {
-        grid-column: 1/span 1;
-        position: absolute;
+        grid-column: 1/span 1; 
     }
     #instructionBox{
         display: block;
         margin-left: 30px;
+        padding-top: 20%;
         width: 80px;
 
     }
@@ -292,40 +292,18 @@
     }
     .key{
         width: 30px;
-        heigth: 30px;
+        height: 30px;
     }
     #mainGameDiv{
-        grid-column: 2/span 10;
+        grid-column: 2/span 6;
         padding-right: 70px;
     }
     #rightColum{
-        grid-column: 3/span 2;
-        height: 200px;
-        position: absolute;
-        width: 80px;
-        margin-top: 400px;
-        padding-left:430px;
-
-    }
-    #tetrisText{
-        font-family: 'Gilroy-Light ☞';
-        font-size: 40px;
-    }
-
-    #levelTxt{
-        font-family: 'Gilroy-Medium ☞';
-        font-style: italic;
-        font-size: 30px;
-    }
-    #ScoreBox{
+        grid-column: 9/span 2;
         display: grid;
-        grid-template-columns: 55px 70%;
-        font-family: 'Gilroy-Light ☞';
-        font-style: italic;
-        font-size: 20px;
+        grid-template-rows: 1fr;
     }
-
-    #cup{
-        font-size: 18px;
-    }
+    
+    
+  
 }

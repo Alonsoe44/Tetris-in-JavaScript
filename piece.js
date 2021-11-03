@@ -219,7 +219,7 @@ class Tetraminoes {
                     tetrisSound.play();
                     tetrisVoices[randonAudioIndex].currentTime = 0;
                     tetrisVoices[randonAudioIndex].play();
-                } else if(rowsDeleted===2){
+                } else if(rowsDeleted===2 || rowsDeleted===3){
                     cleanLineSound.currentTime = 0;
                     cleanLineSound.play();
                     let randonAudioIndex = parseInt(Math.random()*clearLineVoices.length);
@@ -229,15 +229,12 @@ class Tetraminoes {
                     cleanLineSound.currentTime = 0;
                     cleanLineSound.play();
                 }
-                
-
     }
 
     gameOverTime(){
         gameOver = true;
         gameOverSound.play();
         this.printGameOver();
-        
     }
 
     printGameOver(){
