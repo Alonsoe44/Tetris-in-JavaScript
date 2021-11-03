@@ -295,14 +295,10 @@
         height: 30px;
     }
     #mainGameDiv{
-        grid-column: 2/span 6;
+        grid-column: 3/span 6;
         padding-right: 70px;
     }
-    #rightColum{
-        grid-column: 9/span 2;
-        display: grid;
-        grid-template-rows: 1fr;
-    }
+    
     
     
   
