@@ -247,4 +247,5 @@ function setScore(newScore){
     intScore = intScore+newScore;
     score.innerHTML = intScore;
 }
-
+//I need some code to do this web mobile friendly
+//Needs an audio extra or credits or buttons info
