@@ -37,8 +37,11 @@ class Tetraminoes {
 
     //Movement of the pieces
     moveLeft() {
+        mainTheme.play();
         if (!this.collision(-1, 0, this.position)) {
             if(!(this.type==Z && this.x==0&&this.y==-1)){
+                moveSound.currentTime = 0;
+                moveSound.play();
                 this.undrawTetrominos();
                 this.x--;
                 this.drawTetrominos();
@@ -46,8 +49,11 @@ class Tetraminoes {
         }
     }
     moveRight() {
+        mainTheme.play();
         if (!this.collision(1, 0, this.position)) {
             if(!(this.type==S && this.x==7&&this.y==-1)){
+                moveSound.currentTime = 0;
+                moveSound.play();
                 this.undrawTetrominos();
                 this.x++;
                 this.drawTetrominos();
@@ -61,6 +67,8 @@ class Tetraminoes {
             this.drawTetrominos();
         } else {
             this.lock();
+            lockSound.currentTime = 0;
+            lockSound.play();
             this.emptyAndDrawNextBoard();
             this.checkLastRow();
             holdUsedThisTurn = false;
@@ -73,6 +81,9 @@ class Tetraminoes {
     rotateRight() {
         let nextPosition = (this.position + 1) % this.type.length;
         if (!this.collision(0, 0, nextPosition)) {
+            rotateSound.pause();
+            rotateSound.currentTime = 0;
+            rotateSound.play();
             this.undrawTetrominos();
             this.position = (this.position + 1) % this.type.length;
             this.activePosition = this.type[this.position];
@@ -114,16 +125,10 @@ class Tetraminoes {
         for (let i = 0; i < this.activePosition.length; i++) {
             for (let j = 0; j < this.activePosition.length; j++) {
                 if (this.y + i < 0) {
-                    gameOver = true;
-                    ctx.font = "3px Gilroy-Bold ☞";
-                    ctx.fillStyle = '#403221';
-                    ctx.fillText("Game", 1, 8);
-                    ctx.fillText("Over", 1, 11);
-                    ctx.font = "1.5px Gilroy-Bold ☞";
-                    ctx.fillText("Press r", 3, 14);
-                    setBestScore();
+                    this.gameOverTime();
                 }
                 if (this.activePosition[i][j] === 1) {
+
                     boardArr[this.y + i][this.x + j] = this.color;
                     ctx.fillStyle = boardArr[this.y + i][this.x + j];
                     ctx.fillRect(this.x + j, this.y + i, 1, 1);
@@ -142,6 +147,7 @@ class Tetraminoes {
                 isRowFull = isRowFull && (boardArr[i][j] !== empty);
             }
             if (isRowFull) {
+                rowsDeleted++;
                 setScore(200);
                 if(intScore/lvlPoints>=1){
                     setNewLevel();
@@ -157,6 +163,8 @@ class Tetraminoes {
                 }
             }
         }
+        this.checkforTetris();
+        rowsDeleted = 0;
     }
 
     //Let's hold that piece
@@ -202,5 +210,43 @@ class Tetraminoes {
         ObjectArr[0].drawTetrominos();  //draws NextPieces
         ObjectArr[1].drawTetrominos();
         ObjectArr[2].drawTetrominos();
+    }
+
+    checkforTetris(){
+                if(rowsDeleted===4){
+                    let randonAudioIndex = parseInt(Math.random()*tetrisVoices.length);
+                    tetrisSound.currentTime = 0;
+                    tetrisSound.play();
+                    tetrisVoices[randonAudioIndex].currentTime = 0;
+                    tetrisVoices[randonAudioIndex].play();
+                } else if(rowsDeleted===2){
+                    cleanLineSound.currentTime = 0;
+                    cleanLineSound.play();
+                    let randonAudioIndex = parseInt(Math.random()*clearLineVoices.length);
+                    clearLineVoices[randonAudioIndex].currentTime = 0;
+                    clearLineVoices[randonAudioIndex].play();
+                } else if(rowsDeleted===1){
+                    cleanLineSound.currentTime = 0;
+                    cleanLineSound.play();
+                }
+                
+
+    }
+
+    gameOverTime(){
+        gameOver = true;
+        gameOverSound.play();
+        this.printGameOver();
+        
+    }
+
+    printGameOver(){
+        ctx.font = "3px Gilroy-Bold ☞";
+        ctx.fillStyle = '#403221';
+        ctx.fillText("Game", 1, 8);
+        ctx.fillText("Over", 1, 11);
+        ctx.font = "1.5px Gilroy-Bold ☞";
+        ctx.fillText("Press r", 3, 14);
+        setBestScore();
     }
 }

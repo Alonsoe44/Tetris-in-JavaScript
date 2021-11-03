@@ -11,6 +11,7 @@ let gameOver = false;
 let que = -1;
 let holdHasSomething = false;
 let holdUsedThisTurn = false;
+let rowsDeleted = 0;
 
 //Now I create the  the board
 for(let i = 0; i < rows; i++){
@@ -61,10 +62,10 @@ function ndrawSquare(x,y,color){
     ctxNext.strokeStyle = 'rgb(156, 156, 156)';
     ctxNext.strokeRect(x, y, 1, 1);
 }
+
 //let tetraminoes = new Tetraminoes(ObjectArray[0].type,ObjectArray[0].color);
 //********************Main execution******************************
 let ObjectArr = [generateNext(),generateNext(),generateNext()]
-
 let tetraminoes = generateTetra();
 drawBoard(rows,cols,boardArr,drawSquare);
 drawBoard(hrows,hcols,holdArr,hdrawSquare);
@@ -74,13 +75,14 @@ drawBoard(nrows,ncols,nextArr,ndrawSquare);
 ObjectArr[0].drawTetrominos();
 ObjectArr[1].drawTetrominos();
 ObjectArr[2].drawTetrominos();
-//drop();
-
+drop();
 function startNewGame(){
     gameOver = true;
     lvlCount = 1;
     intScore = 0;
     lvlPoints = 1000;
+    dropTime = 1000;
+
     level.innerHTML = 'Level ' + lvlCount;
     score.innerHTML = intScore;
     for(let i = 0; i < rows; i++){
@@ -139,7 +141,7 @@ document.addEventListener('keydown', function(event) {
         case 'Enter':
 
             break;
-        case 'j':
+        case 'q':
             if(!holdUsedThisTurn) {
                 tetraminoes.hold();
             }
@@ -183,10 +185,11 @@ function drop(){
     if(diffStart_Call>dropTime){
         tetraminoes.moveDown();
         dropStart = Date.now();
-        console.log('active');
     }
     if(!gameOver){
         requestAnimationFrame(drop);
+    } else {
+        tetraminoes.printGameOver();
     }
 }
 

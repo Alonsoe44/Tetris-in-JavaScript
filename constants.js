@@ -174,6 +174,35 @@ const nextBoard = document.getElementById('nextBoard');
 const ctxHold = holdBoard.getContext('2d');
 const ctxNext = nextBoard.getContext('2d');
 const ctx = canvas.getContext('2d');
+//Music and effects
+const mainTheme = document.getElementById('tetrisSong');
+const moveSound = document.getElementById('moveSound');
+const rotateSound = document.getElementById('rotateSound');
+const lockSound = document.getElementById('lockSound');
+const cleanLineSound = document.getElementById('cleanLineSound');
+const tetrisSound = document.getElementById('tetrisSound');
+const gameOverSound = document.getElementById('SfxGameOver');
+//Voice effects
+const clearLineVoice1 = document.getElementById('SfxClearLineVoice1');
+const clearLineVoice2 = document.getElementById('SfxClearLineVoice2');
+const clearLineVoice3 = document.getElementById('SfxClearLineVoice3');
+const clearLineVoice4 = document.getElementById('SfxClearLineVoice4');
+const clearLineVoice5 = document.getElementById('SfxClearLineVoice5');
+const clearLineVoice6 = document.getElementById('SfxClearLineVoice6');
+const clearLineVoice7 = document.getElementById('SfxClearLineVoice7');
+const clearLineVoice8 = document.getElementById('SfxClearLineVoice8');
+const clearLineVoice9 = document.getElementById('SfxClearLineVoice9');
+const tetrisVoice1 = document.getElementById('SfxTetrisVoice1');
+const tetrisVoice2 = document.getElementById('SfxTetrisVoice2');
+const tetrisVoice3 = document.getElementById('SfxTetrisVoice3');
+const tetrisVoice4 = document.getElementById('SfxTetrisVoice4');
+const tetrisVoice5 = document.getElementById('SfxTetrisVoice5');
+//Arrays of audios
+
+let clearLineVoices = [clearLineVoice1, clearLineVoice2, clearLineVoice3, clearLineVoice4,
+     clearLineVoice5, clearLineVoice6, clearLineVoice7, clearLineVoice8, clearLineVoice9];
+let tetrisVoices = [tetrisVoice1, tetrisVoice2, tetrisVoice3, tetrisVoice4, tetrisVoice5,];     
+
 //Tetraminous Array
 const tetraminousArr = [[Z,'#A7514A'],[I,'#13ACC3'],[J,'#3F52B4'],[L,'#DA753A'],[O,'#FFC103'],[S,'#4AA74F'],[T,'#934D98']];
 //Now the canvas has a grid with the rules.js constants
