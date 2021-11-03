@@ -165,8 +165,11 @@ const T = [
         [0, 1, 0]
     ]
 ];
+//buttons
+const infoButton = document.getElementById('infoButton');
+const buttonPause = document.getElementById('pauseIcon');
+const pauseMusicButton = document.getElementById('pauseMusic');
 //Now I select the html elements intro variables
-
 const canvas = document.getElementById('mainBoard');
 const holdBoard = document.getElementById('holdBoard');
 const nextBoard = document.getElementById('nextBoard');

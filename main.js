@@ -12,6 +12,9 @@ let que = -1;
 let holdHasSomething = false;
 let holdUsedThisTurn = false;
 let rowsDeleted = 0;
+let pauseState = false;
+let pauseMusicState = false;
+let endInteractions = false;
 
 //Now I create the  the board
 for(let i = 0; i < rows; i++){
@@ -78,6 +81,7 @@ ObjectArr[2].drawTetrominos();
 drop();
 function startNewGame(){
     gameOver = true;
+    endInteractions = false;
     lvlCount = 1;
     intScore = 0;
     lvlPoints = 1000;
@@ -119,41 +123,66 @@ function startNewGame(){
 
 
 
-//I add an even listener for the arrows press
+//I add an even listener for the arrows press and buttons
+infoButton.onclick = () =>{
+    //Here i play the audio with my voice
+}
+buttonPause.onclick = () =>{
+    if(!pauseState&&!endInteractions){
+        pauseGame();
+    } else if(!endInteractions){
+        unpauseGame();
+    }
+}
+pauseMusicButton.onclick = () =>{
+    if(!pauseMusicState){
+        pauseMusic();
+    } else {
+        unPauseMusic();
+    }
+}
 document.addEventListener('keydown', function(event) {
     switch (event.key){
         case 'a':
-            if(tetraminoes.y>=-1){
+            if(tetraminoes.y>=-1&&!gameOver){
                 tetraminoes.moveLeft();
             }
             break;
         case 'd':
-            if(tetraminoes.y>=-1){
+            if(tetraminoes.y>=-1&&!gameOver){
                 tetraminoes.moveRight();
             }
             break;
         case 'w':
-            tetraminoes.rotateRight();
+            if(!gameOver){
+                tetraminoes.rotateRight();
+            } 
             break;
         case 's':
-            tetraminoes.moveDown();
+            if(!gameOver){
+                tetraminoes.moveDown();
+            }
             break;
         case 'Enter':
 
             break;
         case 'q':
-            if(!holdUsedThisTurn) {
+            if(!holdUsedThisTurn&&!gameOver) {
                 tetraminoes.hold();
             }
             break;
         case ' ':
             tetraminoes.inGround = false;
-            for(let i = 0; i<rows && !tetraminoes.inGround; i++){
-                tetraminoes.moveDown();
+            if(!gameOver){
+                for(let i = 0; i<rows && !tetraminoes.inGround; i++){
+                    tetraminoes.moveDown();
+                }
             }
             break;
         case 'm':
-            tetraminoes.rotateRight();
+            if(!gameOver){
+                tetraminoes.rotateRight();
+            }
             break;
         case 'r':
             startNewGame();
@@ -188,11 +217,34 @@ function drop(){
     }
     if(!gameOver){
         requestAnimationFrame(drop);
-    } else {
-        tetraminoes.printGameOver();
-    }
+    } 
 }
-
+function pauseMusic(){
+    pauseMusicState = true;
+    mainTheme.pause();
+    pauseMusicButton.style.color = 'white';
+}
+function unPauseMusic(){
+    mainTheme.play();
+    pauseMusicState = false;
+    pauseMusicButton.style.color = '#403221';
+}
+function pauseGame() {
+    gameOver = true;
+    pauseState = true;
+    ctx.font = "3px Gilroy-Bold ☞";
+    ctx.fillStyle = '#403221';
+    ctx.fillText("Pause", 1, 8);
+    buttonPause.style.color = 'white';
+}
+function unpauseGame() {
+    gameOver = false;
+    pauseState = false;
+    drawBoard(rows,cols,boardArr,drawSquare);
+    tetraminoes.drawTetrominos();
+    buttonPause.style.color = '#403221';
+    drop();
+}
 
 
 //https://www.youtube.com/watch?v=om5yYcg1lT4

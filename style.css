@@ -258,7 +258,21 @@
     font-size: 40px;
     margin-left: 25%;
 }
-
+#pauseIcon:hover{
+    cursor: pointer;
+    font-size: 44px;
+}
+#pauseMusic:hover{
+    cursor: pointer;
+    font-size: 44px;
+}
+#infoButton:hover{
+    cursor: pointer;
+    font-size: 44px;
+}
+#infoButton:active{
+    color: white;
+}
 
 @media only screen and (max-width: 1400px){
     #bigContainer{

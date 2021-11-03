@@ -37,7 +37,9 @@ class Tetraminoes {
 
     //Movement of the pieces
     moveLeft() {
-        mainTheme.play();
+        if(!pauseMusicState){
+            mainTheme.play();
+        }
         if (!this.collision(-1, 0, this.position)) {
             if(!(this.type==Z && this.x==0&&this.y==-1)){
                 moveSound.currentTime = 0;
@@ -49,7 +51,9 @@ class Tetraminoes {
         }
     }
     moveRight() {
-        mainTheme.play();
+        if(!pauseMusicState){
+            mainTheme.play();
+        }
         if (!this.collision(1, 0, this.position)) {
             if(!(this.type==S && this.x==7&&this.y==-1)){
                 moveSound.currentTime = 0;
@@ -233,6 +237,7 @@ class Tetraminoes {
 
     gameOverTime(){
         gameOver = true;
+        endInteractions = true;
         gameOverSound.play();
         this.printGameOver();
     }
