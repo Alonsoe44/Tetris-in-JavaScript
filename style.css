@@ -125,13 +125,15 @@
     margin-left: 40%;
 }
 #nKey{
-    margin-left: 30%;
+    margin-left: 20%;
+    width: 70px;
+    border-radius: 6px;
 }
 #nLetter{
-    margin-left: 40%;
+    margin-left: 20%;
 }
 #mKey{
-    margin-left: 5px;
+    margin-right: 10px;
 }
 #mLetter{
     margin-left: 40%;
@@ -139,7 +141,7 @@
 #especialKeys{
     grid-area: mid;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     background-color: #D1A214;
     padding-top: 15%;
 }
