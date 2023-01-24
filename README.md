@@ -2,6 +2,8 @@
 
 Nostalgia writed with pure html ,css and JavaScript, what else can you ask for ? 
 
+This were my first steps learning JavaScript haha.
+
 https://tetris-vanilla-js-emiliano-polanco.netlify.app/
 
 Lets see what this proyect its about, the classic and old tetris game right? You move the piece and fill the spaces to desapear the rows hard its that?
